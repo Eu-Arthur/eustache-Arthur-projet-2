@@ -6,22 +6,22 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class WriteSymptomDataToFile implements ISymptomWriter {
-    private String filepath;
+    private String filePath;
 
     /**
-     * @param filepath a full or partial path to file with symptom strings in it, one per line
+     * @param filePath a full or partial path to file with symptom strings in it, one per line
      */
-    public WriteSymptomDataToFile(String filepath) {
-        this.filepath = filepath;
+    public WriteSymptomDataToFile(String filePath) {
+        this.filePath = filePath;
     }
 
     public WriteSymptomDataToFile() {
-        this.filepath = "result.out";
+        this.filePath = "result.out";
     }
 
     @Override
     public void writeSymptoms(Map<String, Integer> symptoms) {
-        try (FileWriter fileWriter = new FileWriter(filepath);) {
+        try (FileWriter fileWriter = new FileWriter(filePath);) {
             for (Map.Entry<String, Integer> symptomsCountEntry : symptoms.entrySet()) {
                 fileWriter.write(symptomsCountEntry.getKey() + " : " + symptomsCountEntry.getValue() + "\n");
             }
